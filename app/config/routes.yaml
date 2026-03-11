@@ -9,3 +9,8 @@
 
 controllers:
     resource: routing.controllers
+
+# index:
+#     path: /index
+#     controller: App\Controller\IndexController::index
+#     methods: GET

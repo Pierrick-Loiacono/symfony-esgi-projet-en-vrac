@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hello IndexController!{% endblock %}
+
+{% block body %}
+
+{% set prenom = "Pierrick" %}
+{% set nom = "Loiacono" %}
+{% set nom_complet = nom ~ " " ~ prenom %}
+
+<p> Salut {{ nom_complet }} </p>
+{% endblock %}

@@ -17,3 +17,16 @@ RUN curl -sS https://get.symfony.com/cli/installer | bash \
 RUN docker-php-ext-configure intl \
     && docker-php-ext-install \
         pdo pdo_mysql pdo_pgsql opcache intl zip calendar dom mbstring gd xsl
+
+RUN apt-get install -y \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libwebp-dev \
+    && docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg
+
+RUN git config --global --add safe.directory /var/www/html
+
+RUN a2enmod rewrite ssl
+
+COPY apache/default.conf /etc/apache2/sites-available/000-default.conf
+COPY apache/ssl /etc/apache2/ssl
