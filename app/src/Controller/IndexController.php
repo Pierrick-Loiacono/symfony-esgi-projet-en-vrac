@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -11,25 +12,13 @@ final class IndexController extends AbstractController
     #[Route('/index', name: 'app_index', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('index/index.html.twig', [
-            'nom' => 'Loiacono',
-            'prenom' => 'Pierrick',
-        ]);
+        return new Response("Hello première route");
     }
 
-    // #[Route('/produit/{id}', name: 'produit_show')]
-    // public function show(Produit $produit): Response
-    // {
-    //     return $this->render('index/produit.html.twig', [
-    //         'variable_twig' => 'Texte dans la variable',
-    //         'deuxieme_twig' => 'Ici aussi',
-    //     ]);
-    // }
-
-    #[Route('/produit/list', name: 'produit_list', priority: 2)]
-    public function list(): Response
+    #[Route('/index/{slug}-{id}', name: 'app_index', methods: ['GET'])]
+    public function test(Request $request): Response
     {
-        return $this->render('index/produits.html.twig', [
-        ]);
+        dd($request);
+        return new Response("Hello première route");
     }
 }
