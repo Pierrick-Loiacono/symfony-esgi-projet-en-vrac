@@ -7,10 +7,13 @@
 {% set prenom = "Pierrick" %}
 
 <h1>Contact</h1>
-{{ form_start(form) }}
+{# {{ form_start(form) }}
     {{ form_widget(form) }}
     {# <button type="submit">Envoyer</button> #}
-{{ form_end(form) }}
+{# {{ form_end(form) }} #}
+
+{{ form(form) }}
+
 
 
 {% endblock %}

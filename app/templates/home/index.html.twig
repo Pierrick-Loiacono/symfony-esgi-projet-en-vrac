@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}pierrick{% endblock %}
+
+{% block body %}
+
+{% set note = "" %}
+
+
+{% set fruits = ['Pomme', 'Banane', 'Orange'] %}
+
+{% for pierrot in fruits %}
+    <li>{{ pierrot }}</li>
+{% else %}
+    <p> Aucun fruit, c'est bien vide </p>
+{% endfor %}
+
+{% endblock %}

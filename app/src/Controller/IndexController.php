@@ -15,10 +15,10 @@ final class IndexController extends AbstractController
         return new Response("Hello première route");
     }
 
-    #[Route('/index/{slug}-{id}', name: 'app_index', methods: ['GET'])]
-    public function test(Request $request): Response
-    {
-        dd($request);
-        return new Response("Hello première route");
-    }
+    // #[Route('/index/{slug}-{id}', name: 'app_index_slug', methods: ['GET'])]
+    // public function test(Request $request): Response
+    // {
+    //     dd($request);
+    //     return new Response("Hello première route");
+    // }
 }
