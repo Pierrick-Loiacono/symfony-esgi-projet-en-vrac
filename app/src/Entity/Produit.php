@@ -21,7 +21,7 @@ class Produit
     /**
      * @var Collection<int, Categorie>
      */
-    #[ORM\OneToMany(targetEntity: Categorie::class, mappedBy: 'produits')]
+    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'produits')]
     private Collection $categories;
 
     public function __construct()
@@ -54,23 +54,20 @@ class Produit
         return $this->categories;
     }
 
-    public function addCategorie(Categorie $categorie): static
+    public function addCategory(Categorie $categorie): static
     {
         if (!$this->categories->contains($categorie)) {
             $this->categories->add($categorie);
-            $categorie->setProduits($this);
+            $categorie->addProduit($this);
         }
 
         return $this;
     }
 
-    public function removeCategorie(Categorie $categorie): static
+    public function removeCategory(Categorie $categorie): static
     {
         if ($this->categories->removeElement($categorie)) {
-            // set the owning side to null (unless already changed)
-            if ($categorie->getProduits() === $this) {
-                $categorie->setProduits(null);
-            }
+            $categorie->removeProduit($this);
         }
 
         return $this;

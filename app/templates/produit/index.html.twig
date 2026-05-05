@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('app_create_produit') }}">Créer un produit</a>
+
+    {% for produit in produits %}
+        <p>{{ produit.nom }} - {% for categorie in produit.categories %}{{ categorie.nom }}{% if not loop.last %}, {% endif %}{% endfor %}</p>
+
+    {% endfor %}
+
+{% endblock %}
