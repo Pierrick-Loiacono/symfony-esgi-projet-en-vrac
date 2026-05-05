@@ -18,7 +18,7 @@ final class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData(); // Récupération des données
+            // $data = $form->getData(); // Récupération des données
             
             $this->addFlash('success', 'Formulaire soumis avec succès !');
 

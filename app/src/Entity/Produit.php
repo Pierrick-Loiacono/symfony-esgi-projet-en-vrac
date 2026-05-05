@@ -19,14 +19,14 @@ class Produit
     private ?string $nom = null;
 
     /**
-     * @var Collection<int, Article>
+     * @var Collection<int, Categorie>
      */
-    #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'produits')]
-    private Collection $articles;
+    #[ORM\OneToMany(targetEntity: Categorie::class, mappedBy: 'produits')]
+    private Collection $categories;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,29 +47,29 @@ class Produit
     }
 
     /**
-     * @return Collection<int, Article>
+     * @return Collection<int, Categorie>
      */
-    public function getArticles(): Collection
+    public function getCategories(): Collection
     {
-        return $this->articles;
+        return $this->categories;
     }
 
-    public function addArticle(Article $article): static
+    public function addCategorie(Categorie $categorie): static
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles->add($article);
-            $article->setProduits($this);
+        if (!$this->categories->contains($categorie)) {
+            $this->categories->add($categorie);
+            $categorie->setProduits($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(Article $article): static
+    public function removeCategorie(Categorie $categorie): static
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->categories->removeElement($categorie)) {
             // set the owning side to null (unless already changed)
-            if ($article->getProduits() === $this) {
-                $article->setProduits(null);
+            if ($categorie->getProduits() === $this) {
+                $categorie->setProduits(null);
             }
         }
 
